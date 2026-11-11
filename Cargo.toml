@@ -1,0 +1,35 @@
+[package]
+name = "pdf_layout_measure"
+version = "0.3.0"
+edition = "2021"
+license = "MIT"
+authors = ["matteo80"]
+repository = "https://github.com/matteo80/pdf-layout-measure"
+description = "Misure da layout in PDF (porting in Rust di PDFLayoutMeasure.py). Codice scritto interamente con l'intelligenza artificiale (Claude, Anthropic)."
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "pdf_layout_measure"
+path = "src/main.rs"
+
+# Stesse versioni di Dima 3D, per poter integrare il modulo senza conflitti.
+[dependencies]
+eframe = { version = "0.31", features = ["wgpu"] }
+egui = "0.31"
+pdfium-render = { version = "0.9.5", default-features = false, features = ["pdfium_latest", "thread_safe"] }
+rfd = "0.15"
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = "symbols"
+
+[profile.dev]
+opt-level = 1
+
+[build-dependencies]
+winresource = "0.1"

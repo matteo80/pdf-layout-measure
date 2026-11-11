@@ -1,0 +1,6 @@
+/target
+# Pacchetto da distribuire (pacchetto.ps1)
+/dist/
+# Binari di terzi: si scaricano con scarica_pdfium.ps1
+/third_party/
+__pycache__/
